@@ -1,0 +1,22 @@
+.team-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.champion-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.champion-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+h1 {
+  text-align: center;
+}
