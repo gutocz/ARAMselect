@@ -12,6 +12,8 @@ const wss = new WebSocket.Server({ port: 8080 });
 // Lista para armazenar os campeões sorteados
 let sortedChampionsList = [];
 
+let allSortedChampionsList = [];
+
 /**
  * Envia a lista de sortedChampionsList para todos os clientes conectados
  */
@@ -29,6 +31,7 @@ function broadcastSortedChampions() {
  */
 wss.on("connection", () => {
     sortedChampionsList = []; // Esvazia a lista ao estabelecer conexão
+    allSortedChampionsList = [];
     console.log("Conexão estabelecida. Lista de campeões sorteados resetada.");
 });
 
@@ -72,9 +75,9 @@ async function createTeam() {
         const champion = championNames[Math.floor(Math.random() * championNames.length)];
         if (!usedChampions.has(champion)) {
             usedChampions.add(champion);
-            const img = getChampionImage(champion);
+            //const img = getChampionImage(champion);
             team.push(new Player(champion, 2));
-            sortedChampionsList.push({ name: champion, image: img });
+            allSortedChampionsList.push(champion);
         }
     }
     return team;
@@ -89,10 +92,11 @@ async function rollChampion(player) {
     let newChampion;
     do {
         newChampion = await sortChampion();
-    } while (newChampion === player.champion);
+    } while (newChampion === player.champion || allSortedChampionsList.includes(newChampion));
 
-    const img = getChampionImage(newChampion);
-    sortedChampionsList.push({ name: newChampion, image: img });
+    const img = getChampionImage(player.champion);
+    sortedChampionsList.push({ name: player.champion, image: img });
+    allSortedChampionsList.push(player.champion);
     player.champion = newChampion;
     player.rolls -= 1;
     return player;
@@ -124,6 +128,7 @@ router.post('/roll', async (req, res) => {
         const player = req.body;
         const updatedPlayer = await rollChampion(player);
         broadcastSortedChampions();
+        console.log(allSortedChampionsList);
         res.json(updatedPlayer);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -138,6 +143,7 @@ router.get('/sortedChampions', (req, res) => {
 // Rota para resetar a lista de campeões sorteados
 router.post('/resetSortedChampions', (req, res) => {
     sortedChampionsList = [];
+    allSortedChampionsList = [];
     res.status(200).send("Lista de campeões sorteados resetada.");
 });
 
