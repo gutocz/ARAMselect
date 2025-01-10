@@ -32,7 +32,7 @@ function broadcastSortedChampions() {
 wss.on("connection", () => {
     sortedChampionsList = []; // Esvazia a lista ao estabelecer conexão
     allSortedChampionsList = [];
-    console.log("Conexão estabelecida. Lista de campeões sorteados resetada.");
+    //console.log("Conexão estabelecida. Lista de campeões sorteados resetada.");
 });
 
 /**
@@ -128,7 +128,6 @@ router.post('/roll', async (req, res) => {
         const player = req.body;
         const updatedPlayer = await rollChampion(player);
         broadcastSortedChampions();
-        console.log(allSortedChampionsList);
         res.json(updatedPlayer);
     } catch (error) {
         res.status(500).json({ error: error.message });

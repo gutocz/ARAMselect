@@ -27,7 +27,7 @@ const SortedChampions = () => {
             <div className="sorted-champions-list">
                 {sortedChampions.length > 0 ? (
                     sortedChampions.map((champion, index) => (
-                        <div key={index} className="champion-card">
+                        <div key={index} className="champion-card-sorted">
                             <img src={champion.image} alt={champion.name} />
                             <h3>{champion.name}</h3>
                         </div>

@@ -66,7 +66,7 @@ const TeamComponent = () => {
                     <img src={player.image} alt={player.champion} />
                     <h3>{player.champion}</h3>
                     <button onClick={() => handleRoll(index)}>
-                        🎲 {player.rolls} Roll(s)
+                        🎲 {player.rolls}
                     </button>
                 </div>
             ))}
