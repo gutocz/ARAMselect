@@ -11,6 +11,7 @@ const SortedChampions = () => {
             try {
                 const data = JSON.parse(event.data);
                 setSortedChampions(data);
+                console.log("Campeões sorteados atualizados:", data);
             } catch (error) {
                 console.error("Erro ao processar os dados recebidos do WebSocket:", error.message);
             }

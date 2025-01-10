@@ -105,8 +105,8 @@ async function rollChampion(player) {
 // Rota raiz API
 router.get('/', async (req, res) => {
     try {
-        const team = await createTeam();
-        res.json(team);
+        const response = "API Working!";
+        res.json(response);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
