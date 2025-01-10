@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/ARAMselect/static/css/main.1d102d18.css",
+    "main.js": "/ARAMselect/static/js/main.d4e3d936.js",
+    "static/js/488.e75445ad.chunk.js": "/ARAMselect/static/js/488.e75445ad.chunk.js",
+    "static/media/fundo.png": "/ARAMselect/static/media/fundo.5862d0532676267c138f.png",
+    "index.html": "/ARAMselect/index.html",
+    "main.1d102d18.css.map": "/ARAMselect/static/css/main.1d102d18.css.map",
+    "main.d4e3d936.js.map": "/ARAMselect/static/js/main.d4e3d936.js.map",
+    "488.e75445ad.chunk.js.map": "/ARAMselect/static/js/488.e75445ad.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1d102d18.css",
+    "static/js/main.d4e3d936.js"
+  ]
+}
