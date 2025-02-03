@@ -5,7 +5,7 @@ const SortedChampions = () => {
 
     // Conectar ao WebSocket e escutar as atualizações
     useEffect(() => {
-        const socket = new WebSocket("ws://localhost:8080");
+        const socket = new WebSocket("ws://localhost:8080/");
 
         socket.onmessage = (event) => {
             try {
